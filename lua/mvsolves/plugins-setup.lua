@@ -22,8 +22,7 @@ require("packer").startup(function()
   use 'hrsh7th/nvim-cmp'
   use 'L3MON4D3/LuaSnip'
   use 'hrsh7th/cmp-path'
-  -- use 'hrsh7th/cmp-buffer'
-  -- use 'saadparwaiz1/cmp_luasnip'
+  use 'saadparwaiz1/cmp_luasnip'
 
   -- UI and display
   use 'nvim-lualine/lualine.nvim'
