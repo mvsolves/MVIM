@@ -16,12 +16,21 @@ local ensure_packer = function()
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
     vim.cmd [[packadd packer.nvim]]
+
+    -- require('packer').init({
+    --   snapshot_path = vim.fn.stdpath('config')..'/lua/mvsolves/snapshots/'
+    -- })
     return true
   end
   return false
 end
 
 local packer_bootstrap = ensure_packer()
+
+require('packer').init({
+  snapshot_path = vim.fn.stdpath('config')..'/lua/mvsolves/snapshots/',
+  snapshot = 'stable.vim'
+})
 
 -- Packer Installer
 return require("packer").startup(function(use)
