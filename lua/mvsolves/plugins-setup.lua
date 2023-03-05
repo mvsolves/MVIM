@@ -1,6 +1,31 @@
+-- MV plugin config
+-- require('mvsolves.plugins-config.mason')
+require('mvsolves.plugins-config.completion')
+require('mvsolves.plugins-config.lspconfig')
+require('mvsolves.plugins-config.nvim-tree')
+require('mvsolves.plugins-config.lualine')
+require('mvsolves.plugins-config.comment')
+require('mvsolves.plugins-config.telescope-config')
+require('mvsolves.plugins-config.null-ls')
+-- require('mvsolves.plugins-config.nvim-cmp-config')
+
+
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
+
 -- Packer Installer
-require("packer").startup(function()
- -- Packer can manage itself
+return require("packer").startup(function(use)
+   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
   -- Syntax highlighting
@@ -31,6 +56,7 @@ require("packer").startup(function()
 
   -- Utility plugins
   use 'numToStr/Comment.nvim'
+	use 'tpope/vim-surround'
 
   -- Notes
   use 'vimwiki/vimwiki'
@@ -42,19 +68,10 @@ require("packer").startup(function()
   -- Colorschemes
   use 'rafi/awesome-vim-colorschemes'
   use 'vim-scripts/ScrollColors'
+
+	-- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)
-
-
-
-
--- MV plugin config
--- require('mvsolves.plugins-config.mason')
-require('mvsolves.plugins-config.completion')
-require('mvsolves.plugins-config.lspconfig')
-require('mvsolves.plugins-config.nvim-tree')
-require('mvsolves.plugins-config.lualine')
-require('mvsolves.plugins-config.comment')
-require('mvsolves.plugins-config.telescope-config')
-require('mvsolves.plugins-config.null-ls')
--- require('mvsolves.plugins-config.nvim-cmp-config')
-
