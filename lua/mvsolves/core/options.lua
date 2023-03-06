@@ -36,7 +36,3 @@ vim.cmd('source $HOME/.snippets/snippets.vim')
 
 -- Vimwiki plugin setup
 vim.g.vimwiki_list = { { path = '~/Documents/vimwiki', syntax = 'markdown', ext = '.md' } }
-
--- Emmet-vim setup
-vim.g.user_emmet_install_global = 0
-vim.cmd([[autocmd FileType html,css EmmetInstall]])
