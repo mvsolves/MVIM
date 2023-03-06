@@ -1,3 +1,6 @@
+-- Disable null-ls for certain filetypes or clients that may conflict with other LSPs
+require('null-ls').setup({ on_attach = function() end })
+
 require("mason").setup()
 require('mason-lspconfig').setup {
   ensure_installed = {'tailwindcss', 'lua_ls'}
