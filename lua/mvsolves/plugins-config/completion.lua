@@ -21,8 +21,12 @@ cmp.setup({
   sources = cmp.config.sources ({
     {name = 'nvim_lsp'},
     {name = 'luasnip'},
-    { name = 'cmp_path' }, -- Add this line
-    { name = 'cmp_luasnip' }, -- Add this line
+    { name = 'cmp_path' },
+    { name = 'cmp_luasnip' },
+
+    -- Add `cmp_autopairs` source for nvim-autopairs auto-completion
+    -- { name = 'cmp_autopairs' },
+
 
 
   }, {

@@ -7,6 +7,9 @@ require('mvsolves.plugins-config.lualine')
 require('mvsolves.plugins-config.comment')
 require('mvsolves.plugins-config.telescope-config')
 require('mvsolves.plugins-config.null-ls')
+require('mvsolves.plugins-config.md-preview')
+require('mvsolves.plugins-config.vim-wiki')
+-- require('mvsolves.plugins-config.autopairs')
 -- require('mvsolves.plugins-config.nvim-cmp-config')
 
 
@@ -66,9 +69,17 @@ return require("packer").startup(function(use)
   -- Utility plugins
   use 'numToStr/Comment.nvim'
 	use 'tpope/vim-surround'
+  -- use 'windwp/nvim-autopairs'
+  use 'mvsolves/MV-pairs'
+  use 'christoomey/vim-run-interactive' -- Run terminal commands within Neovim
 
   -- Notes
   use 'vimwiki/vimwiki'
+  -- install without yarn or npm
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
