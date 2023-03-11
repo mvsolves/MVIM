@@ -15,10 +15,12 @@ function updateColorScheme()
     cmd('colorscheme purify')
   else
     cmd('colorscheme hybrid')
-    opt.number = true -- enable line number
-    cmd('highlight LineNr ctermfg=black ctermbg=grey')
-    opt.numberwidth = 4 -- tighten the line number width
   end
+
+  opt.number = true -- enable line number
+  cmd('highlight LineNr ctermfg=black ctermbg=grey')
+  opt.numberwidth = 4 -- tighten the line number width
+  vim.cmd("luafile ~/.config/nvim/lua/mvsolves/plugins-config/lualine.lua") -- Load lualine config file
 end
 
 cmd('autocmd BufEnter * lua updateColorScheme()')
