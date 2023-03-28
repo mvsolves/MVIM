@@ -22,3 +22,10 @@ vim.cmd('au BufNewFile,BufRead *.ejs set filetype=html')
 
 -- Contains MV custom snippets
 vim.cmd('source $HOME/.snippets/snippets.vim')
+
+-- Set tab space for lua
+vim.cmd('autocmd FileType lua setlocal tabstop=2 shiftwidth=2 softtabstop=2')
+
+-- Set tab space for markdown
+vim.cmd('autocmd FileType markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4')
+vim.cmd('autocmd FileType vimwiki setlocal tabstop=4 shiftwidth=4 softtabstop=4')
