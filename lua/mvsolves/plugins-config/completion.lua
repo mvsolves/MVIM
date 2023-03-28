@@ -24,10 +24,6 @@ cmp.setup({
     { name = 'cmp_path' },
     { name = 'cmp_luasnip' },
 
-    -- Add `cmp_autopairs` source for nvim-autopairs auto-completion
-    -- { name = 'cmp_autopairs' },
-
-
 
   }, {
     {name = 'buffer'},
