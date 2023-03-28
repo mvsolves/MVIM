@@ -9,7 +9,9 @@ require('mvsolves.plugins-config.telescope-config')
 require('mvsolves.plugins-config.null-ls')
 require('mvsolves.plugins-config.md-preview')
 require('mvsolves.plugins-config.vim-wiki')
--- require('mvsolves.plugins-config.autopairs')
+require('mvsolves.plugins-config.treesitter')
+require('mvsolves.plugins-config.autotag')
+require('mvsolves.plugins-config.autopairs')
 -- require('mvsolves.plugins-config.nvim-cmp-config')
 
 
@@ -41,7 +43,13 @@ return require("packer").startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Syntax highlighting
-  use 'sheerun/vim-polyglot'
+  use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
 
   -- Syntax formatting
   use 'jose-elias-alvarez/null-ls.nvim'
@@ -69,12 +77,13 @@ return require("packer").startup(function(use)
   -- Utility plugins
   use 'numToStr/Comment.nvim'
 	use 'tpope/vim-surround'
-  -- use 'windwp/nvim-autopairs'
-  use 'mvsolves/MV-pairs'
+	use 'windwp/nvim-ts-autotag'
+  use 'windwp/nvim-autopairs'
   use 'christoomey/vim-run-interactive' -- Run terminal commands within Neovim
 
   -- Notes
   use 'vimwiki/vimwiki'
+
   -- install without yarn or npm
   use({
       "iamcco/markdown-preview.nvim",
